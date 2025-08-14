@@ -26,8 +26,8 @@ function useTimeOffset() {
         await new Promise(r => setTimeout(r, 80));
       }
       if (!mounted) return;
-      samples.sort((a,b)=>a-b);
-      const mid = Math.floor(samples.length/2);
+      samples.sort((a, b) => a - b);
+      const mid = Math.floor(samples.length / 2);
       setOffset(samples[mid]);
     };
     run();
@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     const saved = localStorage.getItem("buzzerSession");
     if (saved) {
-      try { socket.emit("reconnectSession", JSON.parse(saved)); } catch {}
+      try { socket.emit("reconnectSession", JSON.parse(saved)); } catch { }
     }
   }, []);
 
@@ -134,7 +134,7 @@ function App() {
   }, [roleAssigned, isAdmin, sessionCode, name]);
 
   const createSession = () => {
-    const code = Math.random().toString(36).substring(2,7).toUpperCase();
+    const code = Math.random().toString(36).substring(2, 7).toUpperCase();
     socket.emit("createSession", { sessionCode: code });
   };
   const joinSession = () => {
@@ -158,7 +158,7 @@ function App() {
   const fetchHistory = () => socket.emit("getHistory", { sessionCode });
 
   if (sessionClosed) {
-    return <Shell><Card><Title>Session closed</Title><p className="muted">The admin ended this session.</p><div style={{marginTop:12}}><Button onClick={() => { setRoleAssigned(false); setSessionClosed(false); localStorage.removeItem("buzzerSession"); window.location.reload(); }}>Back to Home</Button></div></Card></Shell>;
+    return <Shell><Card><Title>Session closed</Title><p className="muted">The admin ended this session.</p><div style={{ marginTop: 12 }}><Button onClick={() => { setRoleAssigned(false); setSessionClosed(false); localStorage.removeItem("buzzerSession"); window.location.reload(); }}>Back to Home</Button></div></Card></Shell>;
   }
 
   if (!roleAssigned) {
@@ -167,7 +167,7 @@ function App() {
         <Header />
         <Card>
           <Title>Buzzer Pro</Title>
-          <div style={{display:"grid", gap:8, marginTop:12}}>
+          <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
             <Button variant="primary" onClick={createSession}>Create Session (Admin)</Button>
             <Divider />
             <Input placeholder="Session Code" value={inputSessionCode} onChange={setInputSessionCode} />
@@ -197,18 +197,18 @@ function App() {
                 <Button onClick={saveWinner}>Save Winner</Button>
                 <Button onClick={fetchHistory}>Refresh History</Button>
               </div>
-              <div style={{marginTop:12}}>{running ? <Tag color="#22c55e">Running</Tag> : <Tag color="#f97316">Idle</Tag>}{countdownMs>0 && <Tag color="#38bdf8">Starts in {Math.ceil(countdownMs/1000)}s</Tag>}</div>
+              <div style={{ marginTop: 12 }}>{running ? <Tag color="#22c55e">Running</Tag> : <Tag color="#f97316">Idle</Tag>}{countdownMs > 0 && <Tag color="#38bdf8">Starts in {Math.ceil(countdownMs / 1000)}s</Tag>}</div>
             </div>
             <div className="col">
               <SubTitle>Players</SubTitle>
-              <List items={players.map(p=>p.name)} emptyText="No players yet" />
+              <List items={players.map(p => p.name)} emptyText="No players yet" />
             </div>
           </section>
-          <section style={{marginTop:16}}>
+          <section style={{ marginTop: 16 }}>
             <SubTitle>Buzz Order</SubTitle>
-            <OrderedList items={buzzList.map(b => { if(!serverStartTime) return b.name; const reaction = ((b.pressedAt - serverStartTime)/1000).toFixed(3); return `${b.name} (${reaction}s)`; })} emptyText="No buzzes yet" />
+            <OrderedList items={buzzList.map(b => { if (!serverStartTime) return b.name; const reaction = ((b.pressedAt - serverStartTime) / 1000).toFixed(3); return `${b.name} (${reaction}s)`; })} emptyText="No buzzes yet" />
           </section>
-          <section style={{marginTop:16}}>
+          <section style={{ marginTop: 16 }}>
             <SubTitle>History</SubTitle>
             <OrderedList items={history.map(h => `${new Date(h.at).toLocaleTimeString()} — ${h.winner}`)} emptyText="No history yet" />
           </section>
@@ -224,8 +224,8 @@ function App() {
       <Card>
         <Title>Player</Title>
         <Badge>Session: {sessionCode}</Badge>
-        <div style={{marginTop:12}}>
-          {running ? ( countdownMs>0 ? <p className="muted">Get ready… starts in {Math.ceil(countdownMs/1000)}s</p> : <BigButton onClick={pressBuzzer}>BUZZ!</BigButton> ) : <p className="muted">Wait for the admin to start the timer…</p> }
+        <div style={{ marginTop: 12 }}>
+          {running ? (countdownMs > 0 ? <p className="muted">Get ready… starts in {Math.ceil(countdownMs / 1000)}s</p> : <BigButton onClick={pressBuzzer}>BUZZ!</BigButton>) : <p className="muted">Wait for the admin to start the timer…</p>}
         </div>
       </Card>
       <Footer />
@@ -234,19 +234,19 @@ function App() {
 }
 
 // UI primitives
-function Shell({children}) { return <div style={{width:"100%", maxWidth:780, margin:"0 auto", padding:12}}>{children}</div>; }
-function Header(){ return <div style={{padding:"8px 0 16px", display:"flex", justifyContent:"center"}}><h1 style={{margin:0,fontSize:18,color:"#7dd3fc"}}>Buzzer Pro</h1></div>; }
-function Footer(){ return <div style={{padding:16, opacity:0.8, textAlign:"center", fontSize:12}}><span>Made for local LAN game nights 🎉</span></div>; }
-function Card({children}) { return <div style={{background:"#0b1220", border:"1px solid #1f2a44", borderRadius:16, padding:16, boxShadow:"0 10px 30px rgba(0,0,0,0.25)"}}>{children}</div>; }
-function Title({children}){ return <h2 style={{margin:0,fontSize:20}}>{children}</h2>; }
-function SubTitle({children}){ return <h3 style={{margin:"12px 0 8px", fontSize:16, color:"#93c5fd"}}>{children}</h3>; }
-function Divider(){ return <div style={{height:1, background:"#1f2a44", margin:"8px 0"}} />; }
-function Badge({children}){ return <div style={{display:"inline-block", background:"#111827", border:"1px solid #374151", padding:"6px 10px", borderRadius:999, fontSize:12, marginTop:8}}>{children}</div>; }
-function Tag({children, color}){ return <span style={{display:"inline-block", background:color, color:"#0b1220", padding:"4px 8px", borderRadius:999, fontSize:12, marginRight:6}}>{children}</span>; }
-function Button({children, onClick, variant="default"}){ const bg = variant==="primary" ? "#38bdf8" : variant==="danger" ? "#ef4444" : "#334155"; const fg = variant==="primary"||variant==="danger" ? "#0b1220" : "#e2e8f0"; return <button onClick={onClick} style={{background:bg,color:fg,border:"none",borderRadius:12,padding:"10px 14px",fontWeight:600,cursor:"pointer",width:"100%"}}>{children}</button>; }
-function BigButton({children,onClick}){ return <button onClick={onClick} style={{background:"#22c55e",color:"#0b1220",border:"none",borderRadius:24,padding:"20px 24px",fontWeight:900,fontSize:28,cursor:"pointer",width:"100%"}}>{children}</button>; }
-function Input({placeholder, value, onChange}){ return <input placeholder={placeholder} value={value} onChange={e=>onChange(e.target.value)} style={{width:"100%", padding:"12px 14px", borderRadius:12, border:"1px solid #1f2a44", background:"#0b1220", color:"#e2e8f0", outline:"none"}} />; }
-function List({items, emptyText}){ if(!items||items.length===0) return <p className="muted">{emptyText}</p>; return <ul style={{margin:0,paddingLeft:18}}>{items.map((it,i)=><li key={i}>{it}</li>)}</ul>; }
-function OrderedList({items, emptyText}){ if(!items||items.length===0) return <p className="muted">{emptyText}</p>; return <ol style={{margin:0,paddingLeft:18}}>{items.map((it,i)=><li key={i}>{it}</li>)}</ol>; }
+function Shell({ children }) { return <div style={{ width: "100%", maxWidth: 780, margin: "0 auto", padding: 12 }}>{children}</div>; }
+function Header() { return <div style={{ padding: "8px 0 16px", display: "flex", justifyContent: "center" }}><h1 style={{ margin: 0, fontSize: 18, color: "#7dd3fc" }}>Buzzer Pro</h1></div>; }
+function Footer() { return <div style={{ padding: 16, opacity: 0.8, textAlign: "center", fontSize: 12 }}><span> Made for local LAN by Kenstudios 🎉</span></div>; }
+function Card({ children }) { return <div style={{ background: "#0b1220", border: "1px solid #1f2a44", borderRadius: 16, padding: 16, boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}>{children}</div>; }
+function Title({ children }) { return <h2 style={{ margin: 0, fontSize: 20 }}>{children}</h2>; }
+function SubTitle({ children }) { return <h3 style={{ margin: "12px 0 8px", fontSize: 16, color: "#93c5fd" }}>{children}</h3>; }
+function Divider() { return <div style={{ height: 1, background: "#1f2a44", margin: "8px 0" }} />; }
+function Badge({ children }) { return <div style={{ display: "inline-block", background: "#111827", border: "1px solid #374151", padding: "6px 10px", borderRadius: 999, fontSize: 12, marginTop: 8 }}>{children}</div>; }
+function Tag({ children, color }) { return <span style={{ display: "inline-block", background: color, color: "#0b1220", padding: "4px 8px", borderRadius: 999, fontSize: 12, marginRight: 6 }}>{children}</span>; }
+function Button({ children, onClick, variant = "default" }) { const bg = variant === "primary" ? "#38bdf8" : variant === "danger" ? "#ef4444" : "#334155"; const fg = variant === "primary" || variant === "danger" ? "#0b1220" : "#e2e8f0"; return <button onClick={onClick} style={{ background: bg, color: fg, border: "none", borderRadius: 12, padding: "10px 14px", fontWeight: 600, cursor: "pointer", width: "100%" }}>{children}</button>; }
+function BigButton({ children, onClick }) { return <button onClick={onClick} style={{ background: "#22c55e", color: "#0b1220", border: "none", borderRadius: 24, padding: "20px 24px", fontWeight: 900, fontSize: 28, cursor: "pointer", width: "100%" }}>{children}</button>; }
+function Input({ placeholder, value, onChange }) { return <input placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #1f2a44", background: "#0b1220", color: "#e2e8f0", outline: "none" }} />; }
+function List({ items, emptyText }) { if (!items || items.length === 0) return <p className="muted">{emptyText}</p>; return <ul style={{ margin: 0, paddingLeft: 18 }}>{items.map((it, i) => <li key={i}>{it}</li>)}</ul>; }
+function OrderedList({ items, emptyText }) { if (!items || items.length === 0) return <p className="muted">{emptyText}</p>; return <ol style={{ margin: 0, paddingLeft: 18 }}>{items.map((it, i) => <li key={i}>{it}</li>)}</ol>; }
 
 export default App;

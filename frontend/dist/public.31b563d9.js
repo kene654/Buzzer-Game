@@ -25200,7 +25200,7 @@ function App() {
                     }, void 0, false, {
                         fileName: "src/App.js",
                         lineNumber: 161,
-                        columnNumber: 136
+                        columnNumber: 139
                     }, this)
                 }, void 0, false, {
                     fileName: "src/App.js",
@@ -25405,14 +25405,14 @@ function App() {
                                             }, void 0, false, {
                                                 fileName: "src/App.js",
                                                 lineNumber: 200,
-                                                columnNumber: 54
+                                                columnNumber: 57
                                             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Tag, {
                                                 color: "#f97316",
                                                 children: "Idle"
                                             }, void 0, false, {
                                                 fileName: "src/App.js",
                                                 lineNumber: 200,
-                                                columnNumber: 91
+                                                columnNumber: 94
                                             }, this),
                                             countdownMs > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Tag, {
                                                 color: "#38bdf8",
@@ -25424,7 +25424,7 @@ function App() {
                                             }, void 0, true, {
                                                 fileName: "src/App.js",
                                                 lineNumber: 200,
-                                                columnNumber: 141
+                                                columnNumber: 146
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -25581,21 +25581,21 @@ function App() {
                         }, void 0, true, {
                             fileName: "src/App.js",
                             lineNumber: 228,
-                            columnNumber: 40
+                            columnNumber: 41
                         }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(BigButton, {
                             onClick: pressBuzzer,
                             children: "BUZZ!"
                         }, void 0, false, {
                             fileName: "src/App.js",
                             lineNumber: 228,
-                            columnNumber: 119
+                            columnNumber: 122
                         }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "muted",
                             children: "Wait for the admin to start the timer\u2026"
                         }, void 0, false, {
                             fileName: "src/App.js",
                             lineNumber: 228,
-                            columnNumber: 174
+                            columnNumber: 176
                         }, this)
                     }, void 0, false, {
                         fileName: "src/App.js",
@@ -25639,7 +25639,7 @@ function Shell({ children }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 237,
-        columnNumber: 37
+        columnNumber: 39
     }, this);
 }
 _c1 = Shell;
@@ -25660,12 +25660,12 @@ function Header() {
         }, void 0, false, {
             fileName: "src/App.js",
             lineNumber: 238,
-            columnNumber: 104
+            columnNumber: 110
         }, this)
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 238,
-        columnNumber: 27
+        columnNumber: 28
     }, this);
 }
 _c2 = Header;
@@ -25678,16 +25678,16 @@ function Footer() {
             fontSize: 12
         },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-            children: "Made for local LAN game nights \uD83C\uDF89"
+            children: " Made for local LAN by Kenstudios \uD83C\uDF89"
         }, void 0, false, {
             fileName: "src/App.js",
             lineNumber: 239,
-            columnNumber: 99
+            columnNumber: 106
         }, this)
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 239,
-        columnNumber: 27
+        columnNumber: 28
     }, this);
 }
 _c3 = Footer;
@@ -25704,7 +25704,7 @@ function Card({ children }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 240,
-        columnNumber: 36
+        columnNumber: 38
     }, this);
 }
 _c4 = Card;
@@ -25718,7 +25718,7 @@ function Title({ children }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 241,
-        columnNumber: 36
+        columnNumber: 39
     }, this);
 }
 _c5 = Title;
@@ -25733,7 +25733,7 @@ function SubTitle({ children }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 242,
-        columnNumber: 39
+        columnNumber: 42
     }, this);
 }
 _c6 = SubTitle;
@@ -25747,7 +25747,7 @@ function Divider() {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 243,
-        columnNumber: 28
+        columnNumber: 29
     }, this);
 }
 _c7 = Divider;
@@ -25766,7 +25766,7 @@ function Badge({ children }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 244,
-        columnNumber: 36
+        columnNumber: 39
     }, this);
 }
 _c8 = Badge;
@@ -25785,7 +25785,7 @@ function Tag({ children, color }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 245,
-        columnNumber: 41
+        columnNumber: 44
     }, this);
 }
 _c9 = Tag;
@@ -25808,7 +25808,7 @@ function Button({ children, onClick, variant = "default" }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 246,
-        columnNumber: 230
+        columnNumber: 245
     }, this);
 }
 _c10 = Button;
@@ -25830,7 +25830,7 @@ function BigButton({ children, onClick }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 247,
-        columnNumber: 48
+        columnNumber: 52
     }, this);
 }
 _c11 = BigButton;
@@ -25851,7 +25851,7 @@ function Input({ placeholder, value, onChange }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 248,
-        columnNumber: 56
+        columnNumber: 59
     }, this);
 }
 _c12 = Input;
@@ -25862,7 +25862,7 @@ function List({ items, emptyText }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 249,
-        columnNumber: 72
+        columnNumber: 80
     }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
         style: {
@@ -25874,12 +25874,12 @@ function List({ items, emptyText }) {
             }, i, false, {
                 fileName: "src/App.js",
                 lineNumber: 249,
-                columnNumber: 174
+                columnNumber: 190
             }, this))
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 249,
-        columnNumber: 117
+        columnNumber: 125
     }, this);
 }
 _c13 = List;
@@ -25890,7 +25890,7 @@ function OrderedList({ items, emptyText }) {
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 250,
-        columnNumber: 79
+        columnNumber: 87
     }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ol", {
         style: {
@@ -25902,12 +25902,12 @@ function OrderedList({ items, emptyText }) {
             }, i, false, {
                 fileName: "src/App.js",
                 lineNumber: 250,
-                columnNumber: 181
+                columnNumber: 197
             }, this))
     }, void 0, false, {
         fileName: "src/App.js",
         lineNumber: 250,
-        columnNumber: 124
+        columnNumber: 132
     }, this);
 }
 _c14 = OrderedList;
